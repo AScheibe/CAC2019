@@ -683,18 +683,20 @@ public class Game
      public void startAi(int num){
           int times = num;
           int test = 0;
-        while(test < times){
+            while(test < times){
 
-                //if(currentRoom.containsEnemy())
-               // {
-                  //  int eHealth = currentRoom.getEnemyHealth();
-                  //  int pHealth = player.getHealth();
-                  //  int pAD = player.getAttackDamage();
-                   // int eAD = currentRoom.getEnemyDamage();
-                   // ai.fightMath(eHealth, pHealth, pAD, eAD);
-               // }
+                if (currentRoom.containsEnemy())
+                {
+                    int eHealth = currentRoom.getEnemyHealth();
+                    int pHealth = player.getHealth();
+                    int pAD = player.getAttackDamage();
+                    int eAD = currentRoom.getEnemyDamage();
+                    ai.fightMath(eHealth, pHealth, pAD, eAD);
+                    System.out.println("test");
+                    currentRoom.removeEnemy();
+                }
                 
-             if(currentRoom.equals(prison))
+                else if(currentRoom.equals(prison))
                 {
                 ai.scheduleCommand("go", "up", null);
                 processCommand(command); 
