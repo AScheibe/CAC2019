@@ -9,17 +9,12 @@ public class Game
     private Weapon woodSword, rustedSword, , silverSword, goldSword, titaniumSword, infantryBow, silverSpear;
     Room prison, promenade, sewers, ramparts, depths, ossuary, bridge, crypt, graveyard, forest, tower, castle, throne, deathRoom1, deathRoom2, deathRoom3, deathRoom4, throneRoomEntrance; 
     private Enemy scorpion, skeleton, zombie, ghoul, ghost, cthulu, concierge, rusch, wookie;
-    private Enemy convict;
     private Player player;
     private String name;
     private boolean enemyPresent;
-    private int playerDamageDealt;
     private int rand;
-    private int rand2;
     public AI ai;
     private Command command;
-    private String enemyName;
-    private int enemyHealth;
     private ArrayList<Enemy> currentEnemies;
     private boolean wantToQuit;
     private boolean alive;

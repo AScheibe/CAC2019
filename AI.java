@@ -3,13 +3,6 @@ import java.util.*;
 public class AI{
 
     
-    private double scoreWeapon;
-    private double scoreMagic;
-    private double scoreShout;
-    private double scoreFlee;
-    private String move;
-
-    
 public AI()
 {
 
