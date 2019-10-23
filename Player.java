@@ -219,6 +219,11 @@ public class Player
     {
         health = health - takenDamage;
     }
+
+    public void setHealthExact(int newHealth)
+    {
+        health = newHealth;
+    }
     
     public void setHealthHealing(int healthAdd)
     {
