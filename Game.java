@@ -5,8 +5,8 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-    private Item shovel, rope, light, potion;
-    private Weapon woodSword, rustedSword, , silverSword, goldSword, titaniumSword, infantryBow, silverSpear;
+    private Item shovel, rope, potion;
+    private Weapon woodSword, rustedSword, silverSword, goldSword, titaniumSword, infantryBow, silverSpear;
     Room prison, promenade, sewers, ramparts, depths, ossuary, bridge, crypt, graveyard, forest, tower, castle, throne, deathRoom1, deathRoom2, deathRoom3, deathRoom4, throneRoomEntrance; 
     private Enemy scorpion, skeleton, zombie, ghoul, ghost, cthulu, concierge, rusch, wookie;
     private Player player;
@@ -20,6 +20,7 @@ public class Game
     private boolean alive;
     private boolean activeAI;
     Random generator = new Random();
+    private String enemyName;
     /**
      * Create the game and initialise its internal map.
      */
@@ -34,7 +35,6 @@ public class Game
         enemyPresent = false;
         wantToQuit = false;
         alive = true;
-        playerDamageDealt = 0;
         createItems();
         createWeapons();
         createEnemy();
@@ -48,7 +48,6 @@ public class Game
     //sets a random generator
     private void setRand(){
       rand = generator.nextInt(9) + 1;
-      rand2 = generator.nextInt(9) + 1;
     }
 
     /**
@@ -688,11 +687,20 @@ public class Game
           int times = num;
           int test = 0;
         while(test < times){
-                if(currentRoom.equals(prison))
+
+                if(currentRoom.containsEnemy())
+                {
+                    int eHealth = currentRoom.getEnemyHealth();
+                    int pHealth = player.getHealth();
+                    int pAD = player.getAttackDamage();
+                    int eAD = currentRoom.getEnemyDamage();
+                    ai.fightMath(eHealth, pHealth, pAD, eAD);
+                }
+                
+                else if(currentRoom.equals(prison))
                 {
                 ai.scheduleCommand("go", "up", null);
-                processCommand(command);
-                activeAI = false;
+                processCommand(command); 
                 test++;
                 }
 
@@ -790,7 +798,7 @@ public class Game
           ossuary.setItem(potion);
         }
     }
-    
+       
     /** 
      * Try to in to one direction. If there is an exit, enter the new
      * room, otherwise print an error message.

@@ -8,10 +8,13 @@ public AI()
 
 }
 
-private void collectRoom()
+
+public void fightMath(int eHealth, int pHealth, int pAD, int eAD)
 {
-    
-    
+    double times = eHealth / pAD;
+
+    double healthMinus = times * eAD;
+
 }
 
 public void scheduleCommand(String firstWord, String secondWord, String thirdWord)
@@ -29,13 +32,14 @@ public void scheduleCommand(String firstWord, String secondWord, String thirdWor
 
 public void setCommand(String firstWord, String secondWord, String thirdWord)
 {
-    Parser.setCommand(firstWord, secondWord, thirdWord);
+    Parser.setCommand(firstWord, secondWord, thirdWord); 
 }
 
 public void checkName(String name)
 {
   
 }
+
 
 
 
