@@ -1,7 +1,7 @@
 
 public class Weapon
 {
-    // instance variables - replace the example below with your own
+    // instance variabless - replace the example below with your own
     private int damage;
     private boolean takeAble;
     private String name;
