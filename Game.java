@@ -18,7 +18,6 @@ public class Game
     private ArrayList<Enemy> currentEnemies;
     private boolean wantToQuit;
     private boolean alive;
-    private boolean activeAI;
     Random generator = new Random();
     private String enemyName;
     /**
@@ -42,7 +41,6 @@ public class Game
         setItems();
         setWeapons();
         setExits();
-        activeAI = false;
     }
     
     //sets a random generator
@@ -376,7 +374,7 @@ public class Game
         String commandWord2 = command.getSecondWord();
         
         
-        if(enemyPresent == true && activeAI == false)
+        if(enemyPresent == true)
         {
             sewers.removeItem(rope);  
             if(command.isUnknown()) {
@@ -683,21 +681,20 @@ public class Game
         
         */
      public void startAi(int num){
-          activeAI = true;
           int times = num;
           int test = 0;
         while(test < times){
 
-                if(currentRoom.containsEnemy())
-                {
-                    int eHealth = currentRoom.getEnemyHealth();
-                    int pHealth = player.getHealth();
-                    int pAD = player.getAttackDamage();
-                    int eAD = currentRoom.getEnemyDamage();
-                    ai.fightMath(eHealth, pHealth, pAD, eAD);
-                }
+                //if(currentRoom.containsEnemy())
+               // {
+                  //  int eHealth = currentRoom.getEnemyHealth();
+                  //  int pHealth = player.getHealth();
+                  //  int pAD = player.getAttackDamage();
+                   // int eAD = currentRoom.getEnemyDamage();
+                   // ai.fightMath(eHealth, pHealth, pAD, eAD);
+               // }
                 
-                else if(currentRoom.equals(prison))
+             if(currentRoom.equals(prison))
                 {
                 ai.scheduleCommand("go", "up", null);
                 processCommand(command); 
@@ -711,7 +708,6 @@ public class Game
                 processCommand(command);
                 ai.scheduleCommand("go", "up", null);
                 processCommand(command);
-                activeAI = false;
                 test++;
                 }    
             
