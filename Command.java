@@ -8,7 +8,7 @@ public class Command
         
     
     /**
-     * Create a command object. First and second word must be supplied, but
+     * Create aa command object. First and second word must be supplied, but
      * either one (or both) can be null.
      * @param firstWord The first word of the command. Null if the command
      *                  was not recognised.
