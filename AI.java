@@ -2,6 +2,7 @@ import java.util.*;
 
 public class AI{
 
+int playerHealthAi;
     
 public AI()
 {
@@ -11,9 +12,25 @@ public AI()
 
 public void fightMath(int eHealth, int pHealth, int pAD, int eAD)
 {
+    double pHealthCalc;
+    int pHealthCalcInteger;
+
     double times = eHealth / pAD;
 
     double healthMinus = times * eAD;
+
+    pHealthCalc = pHealth - healthMinus;
+
+    pHealthCalcInteger = (int)Math.ceil(pHealthCalc);
+
+    playerHealthAi = pHealthCalcInteger;
+
+}
+
+public int getHealth()
+{
+
+return playerHealthAi;
 
 }
 

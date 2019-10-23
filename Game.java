@@ -694,6 +694,8 @@ public class Game
                     ai.fightMath(eHealth, pHealth, pAD, eAD);
                     System.out.println("test");
                     currentRoom.removeEnemy();
+                    player.setHealth(ai.getHealth());
+                    System.out.println(player.getHealth());
                 }
                 
                 else if(currentRoom.equals(prison))
