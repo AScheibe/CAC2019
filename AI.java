@@ -3,11 +3,12 @@ import java.util.*;
 public class AI{
 
 int playerHealthAi;
-    
+
 public AI()
 {
 
 }
+
 
 
 public void fightMath(int eHealth, int pHealth, int pAD, int eAD)
@@ -43,7 +44,9 @@ public void scheduleCommand(String firstWord, String secondWord, String thirdWor
                 {
                System.out.println("ERROR");
             }
-               setCommand(firstWord, secondWord, thirdWord);     
+               setCommand(firstWord, secondWord, thirdWord);
+               
+                    
 }    
 
 

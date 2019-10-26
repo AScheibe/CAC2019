@@ -20,7 +20,7 @@ public class Game
     private boolean alive;
     Random generator = new Random();
     private String enemyName;
-    /**
+    /**private ArrayList<Enemy> currentEnemies
      * Create the game and initialise its internal map.
      */
     public Game() 
@@ -367,7 +367,7 @@ public class Game
     }
     
     //Alot happens here from complex math to determine damage taken/dealt + determining which commands can be run
-    private boolean processCommand(Command command) 
+    public boolean processCommand(Command command) 
     {
         wantToQuit = false;
         String commandWord = command.getCommandWord();
@@ -695,6 +695,7 @@ public class Game
                     System.out.println("test");
                     currentRoom.removeEnemy();
                     player.setHealthExact(ai.getHealth());
+                    
                     System.out.println(player.getHealth());
                 }
                 
@@ -706,20 +707,25 @@ public class Game
                 }
 
                 else if(currentRoom.equals(promenade)){
-                currentRoom = promenade;
-                player.setRoom(currentRoom);
-                ai.scheduleCommand("take", "wood", "sword");
-                processCommand(command);
-                ai.scheduleCommand("go", "up", null);
-                processCommand(command);
-                test++;
+                    currentRoom = promenade;
+                    player.setRoom(currentRoom);
+                    ai.scheduleCommand("take", "wood", "sword");
+                    processCommand(command);
+                    ai.scheduleCommand("go", "up", "sword"); 
+                    processCommand(command);
+                    test++;     
                 }    
             
                 else if(currentRoom.equals(ossuary)){
                 currentRoom = ossuary;
                 player.setRoom(currentRoom);
+                ai.scheduleCommand("go", "up", null);
                 test++;
+
                 }
+
+
+                
             }        
         }
                  

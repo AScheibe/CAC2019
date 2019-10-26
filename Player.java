@@ -14,11 +14,11 @@ public class Player
     public ArrayList<Weapon> weaponInventory;
     private ArrayList<Item> itemInventory;
     private String name;
-    private Room currentRoom;
     private int size;
     private Fire fireSpell;
     private Freeze freezeSpell;
     private Laser laserSpell;
+    private Room currentRoom;
     /**
      * Constructor for objects of class Player
      */
@@ -42,7 +42,11 @@ public class Player
        return itemInventory; 
     }
     
-    
+    public void setCurrentRoom()
+    {
+
+
+    }
     public int useFire()
     {
         int damage = fireSpell.useMagic();
