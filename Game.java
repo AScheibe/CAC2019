@@ -711,6 +711,8 @@ public class Game
                     player.setRoom(currentRoom);
                     ai.scheduleCommand("take", "wood", "sword");
                     processCommand(command);
+                    ai.scheduleCommand("take", "rope", null);
+                    processCommand(command);
                     ai.scheduleCommand("go", "up", "sword"); 
                     processCommand(command);
                     test++;     
@@ -719,11 +721,39 @@ public class Game
                 else if(currentRoom.equals(ossuary)){
                 currentRoom = ossuary;
                 player.setRoom(currentRoom);
-                ai.scheduleCommand("go", "up", null);
+                ai.scheduleCommand("go", "straight", null);
+                processCommand(command);
                 test++;
 
                 }
+                else if(currentRoom.equals(crypt))
+                {
+                    currentRoom = crypt;
+                    player.setRoom(currentRoom);
+                    ai.scheduleCommand("go", "up", null);
+                    processCommand(command);
+                    test++;
+                }
+                else if(currentRoom.equals(graveyard))
+                {
+                    currentRoom = graveyard;
+                    player.setRoom(currentRoom);
+                    ai.scheduleCommand("go", "right", null);
+                    processCommand(command);
+                    test++;
+                }
+                else if(currentRoom.equals(forest))
+                {
+                    currentRoom = forest;
+                    player.setRoom(currentRoom);
+                    ai.runRope(player.getInventory());
+                    processCommand(command);
+                    ai.setCommand("go", "up", null);
+                    processCommand(command);
+                    test++;
 
+
+                }
 
                 
             }        
@@ -777,7 +807,7 @@ public class Game
             player.removeItemSpecific(potion);
             potion.setAbleToTake(true);
             System.out.println("Health is at: " + player.getHealth());
-        }
+        }                               
         else if(item.equals("shovel") && currentRoom == graveyard && items.contains(shovel))
         {
             System.out.println("*titanium sword appeared!* \n it does 52 damage!");

@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 public class AI{
 
 int playerHealthAi;
@@ -49,6 +50,21 @@ public void scheduleCommand(String firstWord, String secondWord, String thirdWor
                     
 }    
 
+public void runRope(ArrayList<Item> items)
+{
+    for(Item i : items)
+     {
+        if(i.getItemName().equals("rope"))
+        {
+            scheduleCommand("use", "rope", null);
+        }
+        else
+        {
+            scheduleCommand("go", "left", null);
+        }
+     }
+
+}
 
 public void setCommand(String firstWord, String secondWord, String thirdWord)
 {
