@@ -695,8 +695,7 @@ public class Game
                     System.out.println("test");
                     currentRoom.removeEnemy();
                     player.setHealthExact(ai.getHealth());
-                    
-                    System.out.println(player.getHealth());
+                    System.out.println("\n" + "AI defeated an enemy. Current helath: " + player.getHealth() + "\n");
                 }
                 
                 else if(currentRoom.equals(prison))
@@ -751,6 +750,16 @@ public class Game
                     ai.setCommand("go", "up", null);
                     processCommand(command);
                     test++;
+
+
+                }
+                else if(currentRoom.equals(bridge))
+                {
+                    currentRoom = bridge;
+                    player.setRoom(currentRoom);
+                    processCommand(command);
+                    ai.setCommand("go", "straight", null);
+                    processCommand(command);
 
 
                 }
