@@ -616,6 +616,26 @@ public class Game
              {
                  startAi(6);
              }
+             else if (commandWord2.equals("seven"))
+             {
+                 startAi(7);
+             }
+             else if (commandWord2.equals("eight"))
+             {
+                 startAi(8);
+             }
+             else if (commandWord2.equals("nine"))
+             {
+                 startAi(9);
+             }
+             else if (commandWord2.equals("ten"))
+             {
+                 startAi(10);
+             }
+             else if (commandWord2.equals("eleven"))
+             {
+                 startAi(11);
+             }
              else if(commandWord2.equals("all"))
              {
                  startAi(7);
@@ -692,10 +712,9 @@ public class Game
                     int pAD = player.getAttackDamage();
                     int eAD = currentRoom.getEnemyDamage();
                     ai.fightMath(eHealth, pHealth, pAD, eAD);
-                    System.out.println("test");
                     currentRoom.removeEnemy();
                     player.setHealthExact(ai.getHealth());
-                    System.out.println("\n" + "AI defeated an enemy. Current helath: " + player.getHealth() + "\n");
+                    System.out.println("\n" + "AI defeated an enemy. Current health: " + player.getHealth() + "\n");
                 }
                 
                 else if(currentRoom.equals(prison))
@@ -749,18 +768,40 @@ public class Game
                     processCommand(command);
                     ai.setCommand("go", "up", null);
                     processCommand(command);
+                    ai.potionCheck(player.getHealth());
+                    processCommand(command);
                     test++;
 
 
                 }
-                else if(currentRoom.equals(bridge))
+                else if(currentRoom.equals(tower))
                 {
-                    currentRoom = bridge;
+                    currentRoom = tower;
                     player.setRoom(currentRoom);
+                    processCommand(command);
+                    ai.setCommand("take", "potion", null);
+                    processCommand(command);
+                    ai.potionCheck(player.getHealth());
                     processCommand(command);
                     ai.setCommand("go", "straight", null);
                     processCommand(command);
-
+                }
+                else if(currentRoom.equals(throne))
+                {
+                    currentRoom = throne;
+                    player.setRoom(currentRoom);
+                    processCommand(command);
+                    ai.potionCheck(player.getHealth());
+                    processCommand(command);
+                }
+                else if(currentRoom.equals(sewers))
+                {
+                    currentRoom = sewers;
+                    player.setRoom(currentRoom);
+                    processCommand(command);
+                    ai.setCommand("go", "down", null);
+                    ai.potionCheck(player.getHealth());
+                    processCommand(command);
 
                 }
 
@@ -815,7 +856,7 @@ public class Game
             player.setHealthHealing(healthMath + 75);
             player.removeItemSpecific(potion);
             potion.setAbleToTake(true);
-            System.out.println("Health is at: " + player.getHealth());
+            System.out.println("Potion used. Health is at: " + player.getHealth());
         }                               
         else if(item.equals("shovel") && currentRoom == graveyard && items.contains(shovel))
         {
@@ -879,9 +920,7 @@ public class Game
     {
         if(throne.getEnemyHealth() <= 0)
         {
-           System.out.println("Congrats! The land is now free from all chaos and destruction and you have taken your grand oppurtunity" + "\n" + 
-           "and became a grusome facist dictator over the land." + "\n" + "And there goes the story of the French Revolution."
-           );
+           System.out.println("Congrats! The land is now free from all chaos and destruction. You are now very rich and wealthy. Yay");
            alive = false;
         }
     }

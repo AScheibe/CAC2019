@@ -11,7 +11,7 @@ public AI()
 }
 
 
-
+//runs math for AI enemy fight 
 public void fightMath(int eHealth, int pHealth, int pAD, int eAD)
 {
     double pHealthCalc;
@@ -29,6 +29,7 @@ public void fightMath(int eHealth, int pHealth, int pAD, int eAD)
 
 }
 
+//
 public int getHealth()
 {
 
@@ -64,6 +65,18 @@ public void runRope(ArrayList<Item> items)
         }
      }
 
+}
+
+public void potionCheck(int health)
+{
+    if(health < 50)
+    {
+        scheduleCommand("use", "potion", null);
+    }
+    else
+    {
+        scheduleCommand(null, null, null);
+    }
 }
 
 public void setCommand(String firstWord, String secondWord, String thirdWord)
