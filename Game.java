@@ -300,7 +300,7 @@ public class Game
         {
             for(Enemy e : currentEnemies)
             {
-              System.out.println("A " + e.getName() + " stares menacingly!");
+              System.out.println("\n" + "A " + e.getName() + " stares menacingly!" + "\n");
               enemyName = e.getName();
               
             }
@@ -363,7 +363,7 @@ public class Game
     {
         if(player.getHealth() <= 0)
         {
-            System.out.println("You are dead :(");
+            System.out.println("\n" + "You are dead :(" + "\n");
             alive = false;
         }
     }
@@ -550,7 +550,65 @@ public class Game
                 
             }
           }
+
+          else if(commandWord.equals("ai")){
             
+
+            if (commandWord2.equals("one"))
+            {
+                startAi(1);
+            }
+            else if (commandWord2.equals("two"))
+            {
+               startAi(2);
+            }
+            else if (commandWord2.equals("three"))
+            {
+               startAi(3);
+            }
+            else if (commandWord2.equals("four"))
+            {
+               startAi(4);
+            }
+            else if (commandWord2.equals("five"))
+            {
+                startAi(5);
+            }
+            else if (commandWord2.equals("six"))
+            {
+                startAi(6);
+            }
+            else if (commandWord2.equals("seven"))
+            {
+                startAi(7);
+            }
+            else if (commandWord2.equals("eight"))
+            {
+                startAi(8);
+            }
+            else if (commandWord2.equals("nine"))
+            {
+                startAi(9);
+            }
+            else if (commandWord2.equals("ten"))
+            {
+                startAi(10);
+            }
+            else if (commandWord2.equals("eleven"))
+            {
+                startAi(11);
+            }
+            else if(commandWord2.equals("all"))
+            {
+                startAi(12);
+            }
+           else
+           {
+           System.out.println("I don't know what you mean...");
+           return false; 
+           }
+           
+       }
              else if(commandWord.equals("flee")){
                setRand();
                if(rand <= 8)
@@ -715,10 +773,10 @@ public class Game
                     int pAD = player.getAttackDamage();
                     int eAD = currentRoom.getEnemyDamage();
                     ai.fightMath(eHealth, pHealth, pAD, eAD);
-                    currentRoom.removeEnemy();
                     player.setHealthExact(ai.getHealth());
                     if (player.getHealth() > 0)
                     {
+                    currentRoom.removeEnemy();
                     System.out.println("\n" + "AI defeated an enemy. Current health: " + player.getHealth() + "\n");
                     }
                     else{
@@ -749,6 +807,14 @@ public class Game
                 else if(currentRoom.equals(ossuary)){
                 currentRoom = ossuary;
                 player.setRoom(currentRoom);
+                ai.scheduleCommand("open", "chest", null);
+                processCommand(command);
+                ai.scheduleCommand("drop", "wood", "sword");
+                player.dropWeapon(command);
+                ai.scheduleCommand("take", "silver", "sword");
+                processCommand(command);
+                ai.scheduleCommand("take", "potion", null);
+                processCommand(command);    
                 ai.scheduleCommand("go", "straight", null);
                 processCommand(command);
                 test++;
@@ -758,6 +824,8 @@ public class Game
                 {
                     currentRoom = crypt;
                     player.setRoom(currentRoom);
+                    ai.scheduleCommand("take", "shovel", null);
+                    processCommand(command);    
                     ai.scheduleCommand("go", "up", null);
                     processCommand(command);
                     test++;
@@ -817,6 +885,7 @@ public class Game
                     processCommand(command);
                     ai.setCommand("take", "potion", null);
                     processCommand(command);
+                
 
 
                 }
@@ -937,11 +1006,11 @@ public class Game
             System.out.println("Open what?");
         }
         //individual use methods for each item in the game
-        else if(chest.equals("chest") && currentRoom == castle){
+        else if(chest.equals("chest") && currentRoom.equals(castle)){
             System.out.println("You died. Mighty unfortunate.");
             alive = false;
         }
-        else if(chest.equals("chest") && currentRoom == ossuary){
+        else if(chest.equals("chest") && currentRoom.equals(ossuary)){
           System.out.println("Well aren't you a lucky lucky person." + "\n");
           System.out.println("*silver sword appeared!*" + "\n" + "*potion appeared!*" + "\n");
           ossuary.setWeapon(silverSword);
