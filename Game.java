@@ -787,9 +787,9 @@ public class Game
                 
                 else if(currentRoom.equals(prison))
                 {
-                ai.scheduleCommand("go", "up", null);
-                processCommand(command); 
-                test++;
+                    ai.scheduleCommand("go", "up", null);
+                    processCommand(command); 
+                    test++;
                 }
 
                 else if(currentRoom.equals(promenade)){
@@ -805,19 +805,19 @@ public class Game
                 }    
             
                 else if(currentRoom.equals(ossuary)){
-                currentRoom = ossuary;
-                player.setRoom(currentRoom);
-                ai.scheduleCommand("open", "chest", null);
-                processCommand(command);
-                ai.scheduleCommand("drop", "wood", "sword");
-                player.dropWeapon(command);
-                ai.scheduleCommand("take", "silver", "sword");
-                processCommand(command);
-                ai.scheduleCommand("take", "potion", null);
-                processCommand(command);    
-                ai.scheduleCommand("go", "straight", null);
-                processCommand(command);
-                test++;
+                    currentRoom = ossuary;
+                    player.setRoom(currentRoom);
+                    ai.scheduleCommand("open", "chest", null);
+                    processCommand(command);
+                    ai.scheduleCommand("drop", "wood", "sword");
+                    player.dropWeapon(command);
+                    ai.scheduleCommand("take", "silver", "sword");
+                    processCommand(command);
+                    ai.scheduleCommand("take", "potion", null);
+                    processCommand(command);    
+                    ai.scheduleCommand("go", "straight", null);
+                    processCommand(command);
+                    test++;
 
                 }
                 else if(currentRoom.equals(crypt))
