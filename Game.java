@@ -1,6 +1,8 @@
 import java.util.*;
 
 
+
+
 public class Game 
 {
     private Parser parser;
@@ -365,7 +367,8 @@ public class Game
             alive = false;
         }
     }
-    
+      
+   
     //Alot happens here from complex math to determine damage taken/dealt + determining which commands can be run
     public boolean processCommand(Command command) 
     {
@@ -774,6 +777,7 @@ public class Game
 
 
                 }
+                
                 else if(currentRoom.equals(tower))
                 {
                     currentRoom = tower;
@@ -786,6 +790,33 @@ public class Game
                     ai.setCommand("go", "straight", null);
                     processCommand(command);
                 }
+                else if(currentRoom.equals(ramparts))
+                {
+                    currentRoom = ramparts;
+                    player.setRoom(currentRoom);
+                    processCommand(command);
+                    ai.potionCheck(player.getHealth());
+                    processCommand(command);
+                    ai.setCommand("go", "straight", null);
+                    processCommand(command);
+
+
+                }
+                else if(currentRoom.equals(castle))
+                {
+                    currentRoom = castle;
+                    player.setRoom(currentRoom);
+                    processCommand(command);
+                    ai.potionCheck(player.getHealth());
+                    processCommand(command);
+                    ai.setCommand("open", "chest", null);
+                    processCommand(command);
+                    ai.setCommand("take", "potion", null);
+                    processCommand(command);
+
+
+                }
+
                 else if(currentRoom.equals(throne))
                 {
                     currentRoom = throne;
@@ -794,13 +825,50 @@ public class Game
                     ai.potionCheck(player.getHealth());
                     processCommand(command);
                 }
+
                 else if(currentRoom.equals(sewers))
                 {
                     currentRoom = sewers;
                     player.setRoom(currentRoom);
                     processCommand(command);
-                    ai.setCommand("go", "down", null);
                     ai.potionCheck(player.getHealth());
+                    processCommand(command);
+                    ai.setCommand("go", "down", null);
+                    processCommand(command);
+
+                }
+                else if(currentRoom.equals(depths))
+                {
+                    currentRoom = depths;
+                    player.setRoom(currentRoom);
+                    processCommand(command);
+                    ai.setCommand("go", "right", null);
+                    processCommand(command);
+                }
+                else if(currentRoom.equals(crypt))
+                {
+                    currentRoom = crypt;
+                    player.setRoom(currentRoom);
+                    processCommand(command);
+                    ai.setCommand("go", "up", null);
+                    processCommand(command);
+
+                }
+                else if(currentRoom.equals(graveyard))
+                {
+                    currentRoom = graveyard;
+                    player.setRoom(currentRoom);
+                    processCommand(command);
+                    ai.setCommand("go", "straight", null);
+                    processCommand(command);
+
+                }
+                else if(currentRoom.equals(bridge))
+                {
+                    currentRoom = bridge;
+                    player.setRoom(currentRoom);
+                    processCommand(command);
+                    ai.setCommand("go", "up", null);
                     processCommand(command);
 
                 }
