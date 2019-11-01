@@ -592,7 +592,7 @@ public class Game
             if (commandWord.equals("help")) {
                 printHelp();
             }
-            else if(commandWord.equals("Ai")){
+            else if(commandWord.equals("ai")){
             
 
              if (commandWord2.equals("one"))
@@ -641,7 +641,7 @@ public class Game
              }
              else if(commandWord2.equals("all"))
              {
-                 startAi(7);
+                 startAi(12);
              }
             else
             {
@@ -717,7 +717,14 @@ public class Game
                     ai.fightMath(eHealth, pHealth, pAD, eAD);
                     currentRoom.removeEnemy();
                     player.setHealthExact(ai.getHealth());
+                    if (player.getHealth() > 0)
+                    {
                     System.out.println("\n" + "AI defeated an enemy. Current health: " + player.getHealth() + "\n");
+                    }
+                    else{
+                        times = 0;
+                    }
+
                 }
                 
                 else if(currentRoom.equals(prison))
@@ -782,7 +789,6 @@ public class Game
                 {
                     currentRoom = tower;
                     player.setRoom(currentRoom);
-                    processCommand(command);
                     ai.setCommand("take", "potion", null);
                     processCommand(command);
                     ai.potionCheck(player.getHealth());
@@ -794,7 +800,6 @@ public class Game
                 {
                     currentRoom = ramparts;
                     player.setRoom(currentRoom);
-                    processCommand(command);
                     ai.potionCheck(player.getHealth());
                     processCommand(command);
                     ai.setCommand("go", "straight", null);
@@ -806,7 +811,6 @@ public class Game
                 {
                     currentRoom = castle;
                     player.setRoom(currentRoom);
-                    processCommand(command);
                     ai.potionCheck(player.getHealth());
                     processCommand(command);
                     ai.setCommand("open", "chest", null);
@@ -821,7 +825,6 @@ public class Game
                 {
                     currentRoom = throne;
                     player.setRoom(currentRoom);
-                    processCommand(command);
                     ai.potionCheck(player.getHealth());
                     processCommand(command);
                 }
@@ -830,7 +833,6 @@ public class Game
                 {
                     currentRoom = sewers;
                     player.setRoom(currentRoom);
-                    processCommand(command);
                     ai.potionCheck(player.getHealth());
                     processCommand(command);
                     ai.setCommand("go", "down", null);
@@ -841,7 +843,6 @@ public class Game
                 {
                     currentRoom = depths;
                     player.setRoom(currentRoom);
-                    processCommand(command);
                     ai.setCommand("go", "right", null);
                     processCommand(command);
                 }
@@ -849,7 +850,6 @@ public class Game
                 {
                     currentRoom = crypt;
                     player.setRoom(currentRoom);
-                    processCommand(command);
                     ai.setCommand("go", "up", null);
                     processCommand(command);
 
@@ -858,19 +858,15 @@ public class Game
                 {
                     currentRoom = graveyard;
                     player.setRoom(currentRoom);
-                    processCommand(command);
                     ai.setCommand("go", "straight", null);
                     processCommand(command);
-
                 }
                 else if(currentRoom.equals(bridge))
                 {
                     currentRoom = bridge;
                     player.setRoom(currentRoom);
-                    processCommand(command);
                     ai.setCommand("go", "up", null);
                     processCommand(command);
-
                 }
 
                 
