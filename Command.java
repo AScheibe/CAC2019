@@ -14,6 +14,7 @@ public class Command
      *                  was not recognised.
      * @param secondWord The second word of the command.
      */
+    // test 
     public Command(String firstWord, String secondWord, String thirdWord)
     {
         commandWord = firstWord;
